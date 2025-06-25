@@ -21,7 +21,13 @@
 
 ## 使用方法
 
-### 1. 数据更新（JSON注入HTML）
+### 1. Excel 批量编辑与导入
+
+- 使用 `excel_to_json_converter.html`，在浏览器中打开。
+- 按模板填写场景、步骤、选项等内容，导出为 `ai-guide.json`。
+- 支持"步骤"与"问题"类型区分，字段需严格对应。
+
+### 2. 数据更新（JSON注入HTML）
 
 - **Linux/macOS**：
   
@@ -41,11 +47,16 @@
 
 - 生成的 `ai_guide_app.html` 可直接用浏览器打开。
 
-### 2. Excel 批量编辑与导入
+## 流程图
 
-- 使用 `excel_to_json_converter.html`，在浏览器中打开。
-- 按模板填写场景、步骤、选项等内容，导出为 `ai-guide.json`。
-- 支持"步骤"与"问题"类型区分，字段需严格对应。
+```mermaid
+flowchart TD
+    A[Excel 批量编辑场景/步骤/选项] --> B[excel_to_json_converter.html 生成 ai-guide.json]
+    B --> C[update_scenarios.sh / .bat]
+    C --> D[ai_guide_app_template.html]
+    D --> E[生成 ai_guide_app.html]
+    E --> F[浏览器中交互式体验 AI 使用指南]
+```
 
 ## 开源协议
 
