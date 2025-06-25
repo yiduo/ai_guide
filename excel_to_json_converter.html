@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to JSON 转换工具 - AI使用指南</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            color: #2d3a4b;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #4f46e5;
+            background: #f0f9ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #4f46e5;
+            background: #e0e7ff;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .upload-text {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background: #4338ca;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-success {
+            background: #10b981;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .preview-area {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .preview-area pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .table-preview {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .table-preview th,
+        .table-preview td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .table-preview th {
+            background: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .instructions {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #0c4a6e;
+            margin-bottom: 12px;
+        }
+
+        .instructions ul {
+            color: #075985;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .sample-link {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .sample-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 16px;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Excel to JSON 转换工具</h1>
+            <p>将Excel数据转换为AI使用指南应用所需的JSON格式</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📋 Excel格式要求</h2>
+                <p>请确保Excel文件包含以下列（列名必须完全匹配）：</p>
+                <ul>
+                    <li><strong>场景</strong> - 场景名称（如：写作文、解数学题等）</li>
+                    <li><strong>场景描述</strong> - 场景的简要描述（如：学习在写作过程中如何合理使用AI辅助工具）</li>
+                    <li><strong>场景图标</strong> - 场景的图标符号（如：📝、∑、🔬等）</li>
+                    <li><strong>步骤</strong> - 步骤名称（如：理解题目、构思主题等）</li>
+                    <li><strong>步骤还是问题</strong> - 步骤类型（填写"步骤"或"问题"）</li>
+                    <li><strong>选项内容</strong> - 选项的具体内容</li>
+                    <li><strong>类型</strong> - 选项类型（填写"不用AI"、"合理用AI"或"错误用AI"）</li>
+                    <li><strong>是否正确</strong> - 是否为正确选项（填写"是"或"否"）</li>
+                    <li><strong>反馈说明</strong> - 选择该选项后的反馈信息</li>
+                </ul>
+                <p><strong>注意：</strong>每个场景可以有多个步骤，每个步骤可以有多个选项。同一步骤的所有行应该具有相同的"步骤还是问题"值。场景描述和场景图标在同一场景的所有行中应该保持一致。</p>
+            </div>
+
+            <div class="section">
+                <h2>1. 上传Excel文件</h2>
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()"
+                    ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragenter="handleDragEnter(event)"
+                    ondragleave="handleDragLeave(event)">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">点击选择Excel文件 或 拖拽文件到此处</div>
+                    <div class="upload-hint">支持 .xlsx、.xls 格式</div>
+                </div>
+                <input type="file" id="fileInput" class="file-input" accept=".xlsx,.xls"
+                    onchange="handleFileSelect(this.files[0])">
+            </div>
+
+            <div class="section">
+                <h2>2. 预览Excel数据</h2>
+                <div id="excelPreview"></div>
+            </div>
+
+            <div class="section">
+                <h2>3. 转换为JSON</h2>
+                <button class="btn" onclick="convertToJSON()" id="convertBtn" disabled>🔄 转换为JSON</button>
+                <div id="jsonPreview"></div>
+            </div>
+
+            <div class="section">
+                <h2>4. 下载JSON文件</h2>
+                <button class="btn btn-success" onclick="downloadJSON()" id="downloadBtn" disabled>📥 下载
+                    ai-guide.json</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let excelData = null;
+        let jsonData = null;
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            e.target.closest('.upload-area').classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.target.closest('.upload-area').classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.target.closest('.upload-area').classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect(files[0]);
+            }
+        }
+
+        function handleFileSelect(file) {
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    excelData = XLSX.utils.sheet_to_json(worksheet);
+
+                    displayExcelPreview();
+                    document.getElementById('convertBtn').disabled = false;
+
+                } catch (error) {
+                    showError('文件读取失败：' + error.message);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function displayExcelPreview() {
+            const preview = document.getElementById('excelPreview');
+            if (!excelData || excelData.length === 0) {
+                preview.innerHTML = '<div class="error-message">没有找到数据</div>';
+                return;
+            }
+
+            const headers = Object.keys(excelData[0]);
+            let tableHTML = '<table class="table-preview"><thead><tr>';
+            headers.forEach(header => {
+                tableHTML += `<th>${header}</th>`;
+            });
+            tableHTML += '</tr></thead><tbody>';
+
+            excelData.slice(0, 5).forEach(row => {
+                tableHTML += '<tr>';
+                headers.forEach(header => {
+                    tableHTML += `<td>${row[header] || ''}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+
+            tableHTML += '</tbody></table>';
+
+            if (excelData.length > 5) {
+                tableHTML += `<p style="margin-top: 10px; color: #64748b;">显示前5行，共${excelData.length}行数据</p>`;
+            }
+
+            preview.innerHTML = tableHTML;
+        }
+
+        function convertToJSON() {
+            if (!excelData) {
+                showError('请先上传Excel文件');
+                return;
+            }
+
+            try {
+                console.log('开始转换，原始数据:', excelData);
+                const scenarios = [];
+
+                // 按场景分组数据
+                const sceneGroups = {};
+                excelData.forEach((row, index) => {
+                    const sceneName = row['场景'] || row['scene'];
+                    const sceneDesc = row['场景描述'] || row['scene_desc'] || '';
+                    const sceneIcon = row['场景图标'] || row['scene_icon'] || '✨';
+                    const stepName = row['步骤'] || row['step'];
+                    let stepType = row['步骤还是问题'] || row['步骤类型'] || row['step_type'];
+                    const optionContent = row['选项内容'] || row['content'];
+                    const optionType = row['类型'] || row['type'];
+                    const isCorrect = (row['是否正确'] || row['is_correct']) === '是' || (row['是否正确'] || row['is_correct']) === true;
+                    const feedback = row['反馈说明'] || row['feedback'];
+
+                    // 如果没有步骤类型列，根据步骤名称自动判断
+                    if (!stepType) {
+                        // 包含问号的步骤通常是"问题"类型
+                        if (stepName && stepName.includes('？') || stepName.includes('?')) {
+                            stepType = '问题';
+                        } else {
+                            stepType = '步骤';
+                        }
+                    }
+
+                    // 详细调试信息
+                    console.log(`第${index + 1}行:`, {
+                        sceneName,
+                        sceneDesc,
+                        sceneIcon,
+                        stepName,
+                        stepType,
+                        optionContent,
+                        optionType,
+                        isCorrect,
+                        feedback,
+                        rawRow: row
+                    });
+
+                    if (!sceneGroups[sceneName]) {
+                        sceneGroups[sceneName] = {
+                            scene_desc: sceneDesc,
+                            scene_icon: sceneIcon,
+                            steps: {}
+                        };
+                    }
+
+                    // 如果步骤不存在，创建新的步骤对象
+                    if (!sceneGroups[sceneName].steps[stepName]) {
+                        sceneGroups[sceneName].steps[stepName] = {
+                            step_type: stepType,
+                            options: []
+                        };
+                        console.log(`创建新步骤: ${stepName}, step_type: ${stepType}`);
+                    } else {
+                        // 如果步骤已存在，确保step_type一致（同一步骤应该有相同的step_type）
+                        if (sceneGroups[sceneName].steps[stepName].step_type !== stepType) {
+                            console.warn(`步骤"${stepName}"的step_type不一致: ${sceneGroups[sceneName].steps[stepName].step_type} vs ${stepType}`);
+                            // 使用第一个遇到的step_type
+                        }
+                    }
+
+                    // 处理双引号嵌套问题
+                    let processedContent = optionContent;
+                    if (typeof processedContent === 'string') {
+                        // 统一处理双引号：将英文双引号替换为中文书名号，与ai-guide.json保持一致
+                        processedContent = processedContent.replace(/"([^"]*)"/g, '『$1』');
+                        // 处理剩余的单个双引号
+                        processedContent = processedContent.replace(/"/g, '『').replace(/"/g, '』');
+                    }
+
+                    sceneGroups[sceneName].steps[stepName].options.push({
+                        content: processedContent,
+                        type: optionType,
+                        is_correct: isCorrect,
+                        feedback: feedback
+                    });
+                });
+
+                console.log('分组后的数据结构:', sceneGroups);
+
+                // 转换为最终JSON格式
+                Object.keys(sceneGroups).forEach(sceneName => {
+                    const sceneData = sceneGroups[sceneName];
+                    const scene = {
+                        scene: sceneName,
+                        scene_desc: sceneData.scene_desc,
+                        scene_icon: sceneData.scene_icon,
+                        steps: []
+                    };
+
+                    Object.keys(sceneData.steps).forEach(stepName => {
+                        const stepData = sceneData.steps[stepName];
+                        const step = {
+                            step: stepName,
+                            step_type: stepData.step_type,
+                            desc: `这是${stepName}阶段，请选择合适的做法。`,
+                            options: stepData.options
+                        };
+                        console.log(`最终步骤: ${stepName}, step_type: ${step.step_type}`);
+                        scene.steps.push(step);
+                    });
+
+                    scenarios.push(scene);
+                });
+
+                jsonData = scenarios;
+                displayJSONPreview();
+                document.getElementById('downloadBtn').disabled = false;
+                showSuccess('转换成功！');
+
+                // 显示转换统计信息
+                console.log('转换统计:');
+                scenarios.forEach(scene => {
+                    const stepTypes = scene.steps.map(s => s.step_type);
+                    const stepCount = stepTypes.filter(t => t === '步骤').length;
+                    const questionCount = stepTypes.filter(t => t === '问题').length;
+                    console.log(`${scene.scene}: ${stepCount}个步骤, ${questionCount}个问题`);
+                });
+
+            } catch (error) {
+                console.error('转换错误:', error);
+                showError('转换失败：' + error.message);
+            }
+        }
+
+        function displayJSONPreview() {
+            const preview = document.getElementById('jsonPreview');
+            if (!jsonData) return;
+
+            const jsonString = JSON.stringify(jsonData, null, 2);
+            preview.innerHTML = `
+        <div class="preview-area">
+          <pre>${jsonString}</pre>
+        </div>
+      `;
+        }
+
+        function downloadJSON() {
+            if (!jsonData) {
+                showError('请先转换数据');
+                return;
+            }
+
+            const jsonString = JSON.stringify(jsonData, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ai-guide.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showSuccess('JSON文件已下载！');
+        }
+
+        function downloadSample() {
+            const sampleData = [
+                ['场景', '场景描述', '场景图标', '步骤', '步骤还是问题', '选项内容', '类型', '是否正确', '反馈说明'],
+                ['写作文', '学习在写作过程中如何合理使用AI辅助工具', '📝', '构思主题', '步骤', '自己冥思苦想，把能想到的内容都列在纸上', '不用AI', '是', '自己思考有助于锻炼独立构思能力。'],
+                ['写作文', '学习在写作过程中如何合理使用AI辅助工具', '📝', '构思主题', '步骤', '让AI提供一些相关话题和思路，但自己决定要写什么', '合理用AI', '是', '合理借助AI拓展思路，同时保留个人想法。'],
+                ['写作文', '学习在写作过程中如何合理使用AI辅助工具', '📝', '构思主题', '步骤', '直接让AI"给我写一篇关于这个主题的作文，800字"', '错误用AI', '否', '这样做属于抄袭，无法提升写作能力。'],
+                ['写作文', '学习在写作过程中如何合理使用AI辅助工具', '📝', '收集素材', '步骤', '用AI搜索春天相关的素材和例子，然后用自己的话重新表达', '合理用AI', '是', '正确！用AI收集素材然后用自己的语言表达，这样既丰富了内容又保持了个人风格。'],
+                ['解数学题', '学习在数学解题过程中如何合理使用AI辅助工具', '∑', '理解题目', '步骤', '先自己读题并尝试理解，然后让AI解释难懂的概念', '合理用AI', '是', '正确！先自己思考，遇到不懂的概念再请AI解释，这样有助于真正理解题目。'],
+                ['解数学题', '学习在数学解题过程中如何合理使用AI辅助工具', '∑', '理解题目', '步骤', '直接问AI这道题的答案和解题步骤', '错误用AI', '否', '直接要答案不能帮你理解题目。应该先尝试理解题目，遇到困难时再寻求帮助。'],
+                ['解数学题', '学习在数学解题过程中如何合理使用AI辅助工具', '∑', '如何验证解题结果？', '问题', '自己完成计算后，用AI验证结果合理性', '合理用AI', '是', '通过对比发现潜在错误。'],
+                ['解数学题', '学习在数学解题过程中如何合理使用AI辅助工具', '∑', '如何验证解题结果？', '问题', '完全依赖AI生成的计算过程', '错误用AI', '否', '失去自主计算和逻辑训练的机会。'],
+                ['英语翻译', '学习在外语翻译过程中如何合理使用AI辅助工具', '译', '翻译句子', '步骤', '自己查词典逐句翻译', '不用AI', '是', '巩固词汇和语法知识。'],
+                ['英语翻译', '学习在外语翻译过程中如何合理使用AI辅助工具', '译', '翻译句子', '步骤', '用AI翻译初稿，自己调整语序和用词', '合理用AI', '是', '学习地道表达，避免机械翻译。'],
+                ['英语翻译', '学习在外语翻译过程中如何合理使用AI辅助工具', '译', '翻译句子', '步骤', '直接提交AI生成的翻译结果', '错误用AI', '否', '无法提高语言能力，且可能包含错误。'],
+                ['实验报告', '学习在科学实验过程中如何合理使用AI辅助工具', '🔬', '设计实验', '步骤', '完全照搬AI生成的"理想化"方案（忽略现实条件）', '错误用AI', '否', '脱离实际的方案可能导致实验失败。'],
+                ['实验报告', '学习在科学实验过程中如何合理使用AI辅助工具', '🔬', '设计实验', '步骤', '让AI"直接写一个实验方案"', '错误用AI', '否', '直接让AI设计实验，可能会遗漏关键细节。'],
+                ['实验报告', '学习在科学实验过程中如何合理使用AI辅助工具', '🔬', '如何确保实验数据的真实性？', '问题', '自己完成实验并记录真实数据', '不用AI', '是', '确保实验数据的真实性和可靠性。'],
+                ['实验报告', '学习在科学实验过程中如何合理使用AI辅助工具', '🔬', '如何确保实验数据的真实性？', '问题', '用AI生成"理想"的实验数据', '错误用AI', '否', '伪造数据违反科学诚信原则。'],
+                ['写作文', '学习在写作过程中如何合理使用AI辅助工具', '📝', '写作文正文', '步骤', '自己写作，遇到表达困难时询问AI"如何更好地表达这个意思"', '合理用AI', '是', '在具体表达上适当求助AI是可以的，但主体内容应该是你自己的。'],
+                ['健康咨询', '学习在健康咨询过程中如何合理使用AI辅助工具', '🏥', '获取健康信息', '步骤', '查阅权威医学网站和期刊', '不用AI', '是', '直接查阅专业资料可确保信息准确性。'],
+                ['健康咨询', '学习在健康咨询过程中如何合理使用AI辅助工具', '🏥', '获取健康信息', '步骤', '用AI初步了解症状，再核对专业资料', '合理用AI', '是', 'AI可提供参考，但需验证专业来源。'],
+                ['健康咨询', '学习在健康咨询过程中如何合理使用AI辅助工具', '🏥', '获取健康信息', '步骤', '完全相信AI的诊断建议', '错误用AI', '否', 'AI不能替代专业医疗诊断。'],
+                ['健康咨询', '学习在健康咨询过程中如何合理使用AI辅助工具', '🏥', '应该如何处理AI提供的健康建议？', '问题', '将AI建议作为参考，咨询专业医生', '合理用AI', '是', 'AI是辅助工具，专业诊断仍需医生。'],
+                ['健康咨询', '学习在健康咨询过程中如何合理使用AI辅助工具', '🏥', '应该如何处理AI提供的健康建议？', '问题', '直接按照AI建议自行治疗', '错误用AI', '否', '可能延误病情或造成伤害。']
+            ];
+
+            const ws = XLSX.utils.aoa_to_sheet(sampleData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'AI使用指南数据');
+            XLSX.writeFile(wb, 'ai-guide-template.xlsx');
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+
+            // 移除之前的消息
+            const existingMessage = document.querySelector('.error-message, .success-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            document.querySelector('.content').appendChild(errorDiv);
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+
+            // 移除之前的消息
+            const existingMessage = document.querySelector('.error-message, .success-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            document.querySelector('.content').appendChild(successDiv);
+            setTimeout(() => successDiv.remove(), 5000);
+        }
+    </script>
+</body>
+
+</html>

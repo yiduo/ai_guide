@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI使用指南 - 交互式学习</title>
+    <style>
+        :root {
+            --primary-color: #3c65f5;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --background-color: #ffffff;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --border-radius: 0.5rem;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light-color);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--dark-color);
+        }
+
+        #app-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            flex: 1 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            color: var(--dark-color);
+        }
+
+        .main-header {
+            background-color: #3c65f5;
+            /* A blue color from the screenshot */
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .main-header .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .main-header p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .header-icon {
+            font-size: 2.5rem;
+        }
+
+        .scene-list-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .scene-list-header h2 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scene-list-header .grid-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .scene-list-header p {
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+
+        /* Scene Selection */
+        #scene-selection {
+            padding: 0;
+        }
+
+        #scene-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 0 30px 40px;
+        }
+
+        @media (min-width: 900px) {
+            #scene-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .scene-card {
+            background-color: white;
+            border: 1px solid #eef2f8;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .scene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .scene-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #f0f4ff;
+            border-radius: 50%;
+            color: var(--primary-color);
+        }
+
+        .scene-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .scene-card p {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        /* Quiz View */
+        #quiz-view {
+            padding: 30px;
+        }
+
+        #progress-bar-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        #progress-bar {
+            height: 10px;
+            width: 0%;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: width 0.3s ease;
+        }
+
+        #progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-top: 5px;
+        }
+
+        #step-container {
+            margin-bottom: 20px;
+        }
+
+        #step-desc {
+            text-align: center;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-btn {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-align: left;
+            background-color: #fff;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:not([disabled]):hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .option-btn[disabled] {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+
+        .feedback {
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback.correct {
+            background-color: #e9f7ef;
+            color: var(--success-color);
+            border-left: 5px solid var(--success-color);
+        }
+
+        .feedback.incorrect {
+            background-color: #fce8e6;
+            color: var(--danger-color);
+            border-left: 5px solid var(--danger-color);
+        }
+
+        #quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        #quiz-controls button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        #next-btn {
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+
+        #next-btn:enabled {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 12px rgba(60, 101, 245, 0.18);
+            filter: brightness(1.08);
+        }
+
+        #next-btn:disabled {
+            background-color: var(--secondary-color);
+            cursor: not-allowed;
+        }
+
+        #back-to-menu-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        #back-to-menu-btn:hover {
+            background-color: #e8f0fe;
+            color: var(--primary-color);
+        }
+
+
+        /* Completion View */
+        #completion-view {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        #completion-message {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        #restart-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.2s;
+        }
+
+        #restart-btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            padding: 20px 0 10px 0;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #step-title {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-container">
+        <!-- Scene selection -->
+        <div id="scene-selection">
+            <header class="main-header">
+                <div class="header-content">
+                    <span class="header-icon">🤖</span>
+                    <h1>AI 使用指南</h1>
+                </div>
+                <p>学会与AI协作，成为聪明的中学生</p>
+            </header>
+
+            <div class="scene-list-header">
+                <h2><span class="grid-icon">❖</span> 请选择学习场景</h2>
+                <p>选择您感兴趣的场景，了解如何合理使用AI辅助学习</p>
+            </div>
+
+            <div id="scene-buttons"></div>
+        </div>
+
+        <!-- Quiz view -->
+        <div id="quiz-view" class="hidden">
+            <h2 id="scene-title"></h2>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="progress-text"></p>
+            <div id="step-container">
+                <h3 id="step-title"></h3>
+                <p id="step-desc"></p>
+                <div id="options-container"></div>
+            </div>
+            <div id="quiz-controls">
+                <button id="back-to-menu-btn">返回主菜单</button>
+                <button id="next-btn" disabled>下一步</button>
+            </div>
+        </div>
+
+        <!-- Completion view -->
+        <div id="completion-view" class="hidden">
+            <h2 id="completion-title">祝贺你！</h2>
+            <p id="completion-message"></p>
+            <button id="restart-btn">返回主菜单</button>
+        </div>
+    </div>
+
+    <script>
+        const scenarios = $$json_data$$;
+
+        const appState = {
+            currentSceneIndex: null,
+            currentStepIndex: 0,
+        };
+
+        const sceneSelectionView = document.getElementById('scene-selection');
+        const quizView = document.getElementById('quiz-view');
+        const completionView = document.getElementById('completion-view');
+
+        const sceneButtonsContainer = document.getElementById('scene-buttons');
+        const sceneTitle = document.getElementById('scene-title');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const stepTitle = document.getElementById('step-title');
+        const stepDesc = document.getElementById('step-desc');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const backToMenuBtn = document.getElementById('back-to-menu-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const completionMessage = document.getElementById('completion-message');
+
+        function init() {
+            renderSceneSelection();
+            nextBtn.addEventListener('click', nextStep);
+            backToMenuBtn.addEventListener('click', showMainMenu);
+            restartBtn.addEventListener('click', showMainMenu);
+        }
+
+        function showView(view) {
+            sceneSelectionView.style.display = 'none';
+            quizView.style.display = 'none';
+            completionView.style.display = 'none';
+            view.style.display = 'block';
+        }
+
+        function renderSceneSelection() {
+            sceneButtonsContainer.innerHTML = '';
+            scenarios.forEach((scene, index) => {
+                const card = document.createElement('div');
+                card.className = 'scene-card';
+                card.onclick = () => selectScene(index);
+
+                const icon = document.createElement('div');
+                icon.className = 'card-icon';
+                icon.textContent = scene.scene_icon || '✨';
+
+                const title = document.createElement('h3');
+                title.textContent = scene.scene;
+
+                const description = document.createElement('p');
+                description.textContent = scene.scene_desc || '学习AI在该场景的合理运用';
+
+                card.appendChild(icon);
+                card.appendChild(title);
+                card.appendChild(description);
+
+                sceneButtonsContainer.appendChild(card);
+            });
+        }
+
+        function selectScene(index) {
+            appState.currentSceneIndex = index;
+            appState.currentStepIndex = 0;
+            showView(quizView);
+            renderStep();
+        }
+
+        function renderStep() {
+            const scene = scenarios[appState.currentSceneIndex];
+            const step = scene.steps[appState.currentStepIndex];
+            const totalSteps = scene.steps.length;
+
+            sceneTitle.textContent = scene.scene;
+
+            // 计算"步骤"编号
+            let stepTitleText = step.step;
+            if (step.step_type === '步骤') {
+                // 找到当前场景下所有"步骤"类型的步骤
+                const stepOnlyList = scene.steps.filter(s => s.step_type === '步骤');
+                // 当前是第几个"步骤"
+                const currentStepIndex = stepOnlyList.findIndex(s => s === step);
+                // 中文数字
+                const cnNums = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+                if (currentStepIndex !== -1 && currentStepIndex < cnNums.length) {
+                    stepTitleText = `步骤${cnNums[currentStepIndex]}：${step.step}`;
+                }
+            }
+            stepTitle.textContent = stepTitleText;
+
+            // 根据步骤类型显示不同的描述
+            stepDesc.textContent = '请选择合适的做法：';
+
+            const progressPercentage = ((appState.currentStepIndex + 1) / totalSteps) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            progressText.textContent = `进度: ${appState.currentStepIndex + 1} / ${totalSteps}`;
+
+            optionsContainer.innerHTML = '';
+
+            // 创建选项的副本并随机排序
+            const shuffledOptions = [...step.options].sort(() => Math.random() - 0.5);
+
+            shuffledOptions.forEach((option) => {
+                const optionWrapper = document.createElement('div');
+                optionWrapper.className = 'option-item';
+
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option.content;
+                button.onclick = () => selectOption(button, option);
+
+                optionWrapper.appendChild(button);
+                optionsContainer.appendChild(optionWrapper);
+            });
+
+            nextBtn.disabled = true;
+        }
+
+        function selectOption(button, option) {
+            // Clear all previous feedback messages before showing a new one.
+            const allFeedback = optionsContainer.querySelectorAll('.feedback');
+            allFeedback.forEach(fb => fb.remove());
+
+            // Create and display the new feedback
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.className = 'feedback';
+            feedbackDiv.textContent = option.feedback;
+
+            if (option.is_correct) {
+                feedbackDiv.classList.add('correct');
+                nextBtn.disabled = false; // Enable next step
+            } else {
+                feedbackDiv.classList.add('incorrect');
+                nextBtn.disabled = true; // Disable next step if choice is wrong
+            }
+
+            // Attach feedback to the specific option that was clicked
+            button.parentElement.appendChild(feedbackDiv);
+        }
+
+        function nextStep() {
+            const scene = scenarios[appState.currentSceneIndex];
+            appState.currentStepIndex++;
+
+            if (appState.currentStepIndex < scene.steps.length) {
+                renderStep();
+            } else {
+                showCompletion();
+            }
+        }
+
+        function showCompletion() {
+            const scene = scenarios[appState.currentSceneIndex];
+            completionMessage.textContent = `你已经完成了"${scene.scene}"场景的学习，做得很好！`;
+            showView(completionView);
+        }
+
+        function showMainMenu() {
+            appState.currentSceneIndex = null;
+            appState.currentStepIndex = 0;
+            showView(sceneSelectionView);
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+    <footer>
+        Copyright © 2025 应用和场景由北京值得买科技股份有限公司和北京十二中学生共创 版权所有
+    </footer>
+</body>
+
+</html>

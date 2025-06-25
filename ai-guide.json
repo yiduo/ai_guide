@@ -1,0 +1,947 @@
+[
+  {
+    "scene": "写语文作文",
+    "scene_desc": "独立构思表达，合理使用AI辅助",
+    "scene_icon": "📝",
+    "steps": [
+      {
+        "step": "理解题目要求",
+        "step_type": "步骤",
+        "desc": "这是理解题目要求阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己仔细阅读题目，划出关键词和要求",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自己理解题目是写作的基础，有助于培养独立思考能力。"
+          },
+          {
+            "content": "让AI解释一下题目要求和可能的写作方向",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "适当使用AI帮助理解题目是可以的，但最终还是要自己把握写作方向。"
+          },
+          {
+            "content": "直接让AI根据题目生成一篇完整作文",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "直接让AI写作文属于抄袭，无法提升你的写作能力。"
+          }
+        ]
+      },
+      {
+        "step": "构思作文内容",
+        "step_type": "步骤",
+        "desc": "这是构思作文内容阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己冥思苦想，把能想到的内容都列在纸上",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自己构思有助于锻炼独立思考和创意能力。"
+          },
+          {
+            "content": "让AI提供一些相关话题和思路，但自己决定要写什么",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "合理借助AI拓展思路，同时保留个人想法，是很好的平衡。"
+          },
+          {
+            "content": "直接让AI“给我写一篇关于这个主题的作文，800字”",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "直接让AI写作文不能提高你的写作能力，而且老师一眼就能看出不是你写的。"
+          }
+        ]
+      },
+      {
+        "step": "写作文正文",
+        "step_type": "步骤",
+        "desc": "这是写作文正文阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "完全自己动手写，遇到困难时查阅资料或请教老师",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立完成写作能有效提升你的表达能力"
+          },
+          {
+            "content": "自己写作，遇到表达困难时询问AI“如何更好地表达这个意思”",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "在具体表达上适当求助AI是可以的，但主体内容应该是你自己的。"
+          },
+          {
+            "content": "把AI生成的内容直接复制到作文里",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "直接复制AI内容不利于提升写作能力，而且可能被识别为抄袭。"
+          }
+        ]
+      },
+      {
+        "step": "检查修改作文",
+        "step_type": "步骤",
+        "desc": "这是检查修改作文阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己反复阅读修改，或请同学帮忙检查",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自己检查和同学互评都是提高写作能力的好方法。"
+          },
+          {
+            "content": "用AI检查语法错误和表达是否通顺，但自己决定如何修改",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "利用AI检查技术性问题是合理的使用方式。"
+          },
+          {
+            "content": "完全让AI重写整篇作文",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "这样做你的作文就失去了个人特色，也无法体现你的真实水平。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "解数学应用题",
+    "scene_desc": "培养数学思维，适当借助AI验证",
+    "scene_icon": "🧮",
+    "steps": [
+      {
+        "step": "理解题目要求",
+        "step_type": "步骤",
+        "desc": "这是理解题目要求阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己仔细读题，画图分析已知条件和求解目标",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立审题和画图能培养数学思维和空间想象能力。"
+          },
+          {
+            "content": "遇到复杂的应用场景时，让AI帮忙解释实际背景",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助理解题目的实际应用背景，但数学逻辑要自己分析。"
+          },
+          {
+            "content": "直接让AI分析题目并给出解题思路",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "跳过理解过程会失去培养数学思维的机会。"
+          }
+        ]
+      },
+      {
+        "step": "思考解题方法",
+        "step_type": "步骤",
+        "desc": "这是思考解题方法阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己回忆相关的数学公式和解题方法",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立思考解题方法能巩固数学知识和提高解题能力。"
+          },
+          {
+            "content": "先自己想想可能的方法，卡住时让AI提示这类题目的一般思路方向",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "先独立思考再适当求助，AI只提供方向引导而不直接给出方法。"
+          },
+          {
+            "content": "让AI直接告诉你应该用哪个公式和方法",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "依赖AI选择方法会阻碍数学思维的发展。"
+          }
+        ]
+      },
+      {
+        "step": "具体计算过程",
+        "step_type": "步骤",
+        "desc": "这是具体计算过程阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己动手计算每一个步骤，仔细检查过程",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "亲自计算能提高运算能力和细心程度。"
+          },
+          {
+            "content": "自己完成计算，用AI复查某个复杂运算是否正确",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "在具体计算环节适当验证可以避免低级错误。"
+          },
+          {
+            "content": "把算式输入AI让它完成所有计算步骤",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "完全依赖AI计算会失去锻炼运算能力的机会。"
+          }
+        ]
+      },
+      {
+        "step": "检查答案",
+        "step_type": "步骤",
+        "desc": "这是检查答案阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己检查答案是否符合实际情况和题目要求",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立验证答案能培养数学直觉和批判性思维。"
+          },
+          {
+            "content": "自己先检查一遍，如果怀疑某个具体计算有误，可以用AI验证那一步",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "先自我检查培养验证能力，AI只在特定计算步骤提供辅助。"
+          },
+          {
+            "content": "完全相信AI的验证结果，不再自己思考",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "盲目信任AI验证会失去培养判断能力的机会。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "英语翻译",
+    "scene_desc": "提高语言能力，AI协助不代替",
+    "scene_icon": "🔤",
+    "steps": [
+      {
+        "step": "理解原文内容",
+        "step_type": "步骤",
+        "desc": "这是理解原文内容阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己逐句阅读，查字典或教材理解生词和语法",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自主阅读能提高词汇量，加深对语言结构的理解。"
+          },
+          {
+            "content": "让AI解释复杂句型和语法结构，但自己查生词",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助理解难点语法，但词汇学习要靠自己积累。"
+          },
+          {
+            "content": "直接让AI翻译全文然后背下来",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "跳过理解过程无法提高英语水平，也失去学习机会。"
+          }
+        ]
+      },
+      {
+        "step": "开始翻译句子",
+        "step_type": "步骤",
+        "desc": "这是开始翻译句子阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己先试着翻译，不会的词查字典或问老师",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立翻译能锻炼语言转换能力和表达技巧。"
+          },
+          {
+            "content": "自己翻译主体内容，遇到个别习语或固定搭配时询问AI",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "在具体难点上求助AI是合理的，但主要工作要自己完成。"
+          },
+          {
+            "content": "把每个句子都交给AI翻译，然后抄下来",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "完全依赖AI翻译无法提升英语能力，老师也容易发现。"
+          }
+        ]
+      },
+      {
+        "step": "初稿翻译后检查和完善",
+        "step_type": "步骤",
+        "desc": "这是初稿翻译后检查和完善阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己多读几遍，检查语句是否通顺、意思是否准确",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自我检查能培养语言敏感度和修改能力。"
+          },
+          {
+            "content": "用AI检查语法错误和表达是否自然，但保持自己的翻译风格",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助发现技术性错误，但译文风格要保持个人特色。"
+          },
+          {
+            "content": "让AI重新翻译一遍，直接替换自己的版本",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "用AI替换自己的翻译失去了个人理解和表达特色。"
+          }
+        ]
+      },
+      {
+        "step": "完成后进行学习反思",
+        "step_type": "步骤",
+        "desc": "这是完成后进行学习反思阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "回顾翻译过程，整理学到的新词汇和表达方式",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "主动总结能巩固学习成果，形成知识积累。"
+          },
+          {
+            "content": "请AI分析这类文章的翻译技巧，但结合自己的体验思考",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供翻译方法指导，但要结合实践经验理解。"
+          },
+          {
+            "content": "让AI总结翻译要点，直接背下来应付下次作业",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "机械记忆AI总结无法形成真正的翻译能力。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "撰写历史论文",
+    "scene_desc": "独立分析史料，AI拓展研究视角",
+    "scene_icon": "🏛️",
+    "steps": [
+      {
+        "step": "收集资料",
+        "step_type": "步骤",
+        "desc": "这是收集资料阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己去图书馆或权威网站查找史料",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自己查找资料能提高信息筛选能力。"
+          },
+          {
+            "content": "让AI推荐相关历史事件和书籍，自己核实",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可提供研究方向，但自己查证更准确。"
+          },
+          {
+            "content": "让AI“直接写一篇历史论文”",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "直接让AI写论文属于学术不端，老师会识别出来。"
+          }
+        ]
+      },
+      {
+        "step": "撰写论点",
+        "step_type": "步骤",
+        "desc": "这是撰写论点阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己分析史料，形成观点",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立思考能提升批判性思维。"
+          },
+          {
+            "content": "让AI提供不同历史学家的观点，自己核实内容进行整合",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可帮助拓展视角，但自己分析仍是关键。"
+          },
+          {
+            "content": "复制AI生成的论点",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "直接复制AI的观点，可能缺乏深度和原创性。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "科学实验报告",
+    "scene_desc": "亲手实践记录，AI辅助理解概念",
+    "scene_icon": "🔬",
+    "steps": [
+      {
+        "step": "实验预习准备",
+        "step_type": "步骤",
+        "desc": "这是实验预习准备阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己查阅教科书和相关资料，理解实验原理",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自主学习能加深对实验原理的理解。"
+          },
+          {
+            "content": "让AI解释复杂的物理概念，但自己整理实验步骤",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助理解难点，但实验流程要自己掌握。"
+          },
+          {
+            "content": "直接让AI写一份完整的实验预习报告",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "不经过自己思考的预习无法真正理解实验。"
+          }
+        ]
+      },
+      {
+        "step": "实验操作记录",
+        "step_type": "步骤",
+        "desc": "这是实验操作记录阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "亲自动手操作，认真记录每个步骤和数据",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "动手实践是科学学习的核心，无法替代。"
+          },
+          {
+            "content": "遇到异常现象时询问AI可能的原因，但继续自己操作",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助分析问题，但实验操作必须亲自完成。"
+          },
+          {
+            "content": "让AI预测实验结果，直接填写『理想数据』",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "伪造实验数据违反科学精神，也失去了学习机会。"
+          }
+        ]
+      },
+      {
+        "step": "数据分析处理",
+        "step_type": "步骤",
+        "desc": "这是数据分析处理阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己用计算器逐步计算，分析数据规律",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "手动计算能让你更好理解数据处理过程。"
+          },
+          {
+            "content": "自己完成主要计算，用AI验证计算结果是否正确",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助检查计算错误，但分析思路要自己形成。"
+          },
+          {
+            "content": "把所有数据交给AI，直接要分析结论",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "不经过自己分析的结论无法提升科学思维能力。"
+          }
+        ]
+      },
+      {
+        "step": "撰写实验报告",
+        "step_type": "步骤",
+        "desc": "这是撰写实验报告阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "根据自己的实验记录和思考，独立完成报告",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "独立写作能真实反映你的实验理解水平。"
+          },
+          {
+            "content": "自己写主体内容，用AI帮忙检查语法和表达是否清晰",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助优化表达，但实验内容必须真实。"
+          },
+          {
+            "content": "让AI根据实验题目生成一份标准报告",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "抄袭AI生成的报告无法反映你的真实实验过程。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "创意设计",
+    "scene_desc": "保持创意主导，合规使用AI工具",
+    "scene_icon": "🎨",
+    "steps": [
+      {
+        "step": "需要为班级活动制作海报配图",
+        "step_type": "问题",
+        "desc": "这是需要为班级活动制作海报配图阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "明确海报的主题和风格要求，自己构思画面内容",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "先有清晰的创意想法，才能更好地指导AI生成。"
+          },
+          {
+            "content": "用AI生成几种不同风格的参考图，启发自己的创意思路",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供创意参考，但最终的设计理念要自己确定。"
+          },
+          {
+            "content": "直接让AI生成一张完整的海报，不做任何修改就使用",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "缺乏个人创意投入，生成的图片可能不符合具体需求。"
+          }
+        ]
+      },
+      {
+        "step": "想要制作有趣的人物图片",
+        "step_type": "问题",
+        "desc": "这是想要制作有趣的人物图片阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "设计全新的虚拟角色，发挥自己的想象力创作",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "原创虚拟角色既有创意又避免了任何法律风险。"
+          },
+          {
+            "content": "了解AI使用规范，确保创作内容不侵犯他人权益",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "学习创作规范是负责任使用AI工具的基础。"
+          },
+          {
+            "content": "生成老师、同学或明星的搞笑恶搞图片",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "恶搞他人形象侵犯肖像权，属于违法行为，绝对不可以做。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "理性看新闻",
+    "scene_desc": "培养媒体素养，做负责任读者",
+    "scene_icon": "📰",
+    "steps": [
+      {
+        "step": "想了解最近发生的重要新闻事件",
+        "step_type": "问题",
+        "desc": "这是想了解最近发生的重要新闻事件阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "观看央视新闻、人民日报等权威媒体的新闻报道",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "权威媒体信息经过专业审核，真实性和准确性更有保障。"
+          },
+          {
+            "content": "用AI汇总不同媒体的报道，但要自己核实信息来源",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提高获取效率，但需要验证信息的真实性。"
+          },
+          {
+            "content": "只看朋友圈和短视频平台上的热门消息",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "社交媒体信息未经核实，容易传播谣言和错误信息。"
+          }
+        ]
+      },
+      {
+        "step": "看到一条让人震惊的新闻，不太确定是否属实",
+        "step_type": "问题",
+        "desc": "这是看到一条让人震惊的新闻，不太确定是否属实阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "对比多个权威媒体的报道，看是否有相同信息",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "交叉验证是判断新闻真实性的有效方法。"
+          },
+          {
+            "content": "询问AI关于这类新闻常见的造假手段和识别技巧",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以科普常见的谣言传播模式，帮助提高识别能力。"
+          },
+          {
+            "content": "觉得很有趣就直接转发分享给同学朋友",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "未经核实就传播信息可能助长谣言，承担传播责任。"
+          }
+        ]
+      },
+      {
+        "step": "同学们在讨论热门新闻事件，你想参与讨论",
+        "step_type": "问题",
+        "desc": "这是同学们在讨论热门新闻事件，你想参与讨论阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "基于可靠信息发表自己的看法，尊重不同观点",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "理性讨论有助于培养批判性思维和表达能力。"
+          },
+          {
+            "content": "用AI帮忙整理不同角度的观点，丰富自己的思考",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助拓展视角，但要形成自己的独立见解。"
+          },
+          {
+            "content": "直接复制AI生成的评论观点参与讨论",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "缺乏独立思考的观点无法真正参与有意义的讨论。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "注册账户",
+    "scene_desc": "保护个人隐私，提升网络安全意识",
+    "scene_icon": "🔐",
+    "steps": [
+      {
+        "step": "填写个人信息",
+        "step_type": "步骤",
+        "desc": "这是填写个人信息阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "只填写必要的用户名和邮箱，其他信息能不填就不填",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "最小化信息原则，只提供必需信息最安全。"
+          },
+          {
+            "content": "让AI帮你生成一个虚假的个人资料来保护隐私",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "使用虚假信息保护真实身份是合理的自我保护。"
+          },
+          {
+            "content": "把身份证号、家庭住址、父母姓名等真实信息全部填入",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "过度分享个人信息可能被恶意利用，存在安全风险。"
+          }
+        ]
+      },
+      {
+        "step": "设置密码和安全问题",
+        "step_type": "步骤",
+        "desc": "这是设置密码和安全问题阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己想一个复杂但好记的密码组合",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自己设置的密码只有你知道，最安全。"
+          },
+          {
+            "content": "让AI教你如何设置强密码的规则和技巧",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "学会密码设置规则比直接要答案更有用。"
+          },
+          {
+            "content": "直接把AI生成的密码发给朋友帮你记住",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "密码是个人隐私，不应该与他人分享。"
+          }
+        ]
+      },
+      {
+        "step": "阅读隐私条款",
+        "step_type": "步骤",
+        "desc": "这是阅读隐私条款阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "耐心阅读重要条款，特别是数据使用和分享部分",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "了解自己的数据会如何被使用很重要。"
+          },
+          {
+            "content": "让AI帮你总结隐私条款的要点，但自己做最终决定",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助理解复杂条款，但决定权在你。"
+          },
+          {
+            "content": "直接点同意，反正也看不懂那些法律条文",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "盲目同意可能让你的个人数据被不当使用。"
+          }
+        ]
+      },
+      {
+        "step": "选择信息分享设置",
+        "step_type": "步骤",
+        "desc": "这是选择信息分享设置阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "全部选择拒绝，不接收任何推广和数据分享",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "拒绝不必要的信息分享能更好保护隐私。"
+          },
+          {
+            "content": "让AI帮你分析哪些选项比较安全，然后自己决定",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助理解选项含义，但选择权在你。"
+          },
+          {
+            "content": "全部选择同意，这样能获得更多功能和服务",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "过度分享个人信息可能带来隐私泄露风险。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "社交互动",
+    "scene_desc": "真诚网络交流，维护健康人际关系",
+    "scene_icon": "💬",
+    "steps": [
+      {
+        "step": "发布动态内容",
+        "step_type": "步骤",
+        "desc": "这是发布动态内容阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己写真实感受，分享正能量的校园生活",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "真实的个人表达更有温度，也更能获得朋友认同。"
+          },
+          {
+            "content": "用AI帮忙润色文字表达，但内容和想法是自己的",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助优化表达，但真实的情感和经历不能伪造。"
+          },
+          {
+            "content": "让AI生成看起来很酷的虚假经历和感受",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "虚假的社交内容会损害真实的人际关系和个人诚信。"
+          }
+        ]
+      },
+      {
+        "step": "回复朋友消息",
+        "step_type": "步骤",
+        "desc": "这是回复朋友消息阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "诚实表达自己的想法，即使表达不够完美也没关系",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "真诚的交流比完美的辞藻更重要，朋友会理解你。"
+          },
+          {
+            "content": "先自己想想要说什么，用AI帮忙组织语言但保持真实想法",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以帮助表达，但核心的情感和态度要是真实的。"
+          },
+          {
+            "content": "完全让AI自动生成回复内容并发送",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "机械化的回复会让朋友感到被敷衍，影响友谊。"
+          }
+        ]
+      },
+      {
+        "step": "处理网络冲突",
+        "step_type": "步骤",
+        "desc": "这是处理网络冲突阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "冷静下来，主动私聊对方诚恳沟通",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "真诚的面对面沟通是解决冲突的最好方式。"
+          },
+          {
+            "content": "请AI帮你分析冲突原因和沟通技巧，但自己去解决",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供沟通建议，但解决问题需要你的真诚态度。"
+          },
+          {
+            "content": "让AI帮你生成一段『完美』的道歉或反驳",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "虚假的道歉或过度包装的话术会让冲突变得更复杂。"
+          }
+        ]
+      },
+      {
+        "step": "保护个人隐私",
+        "step_type": "步骤",
+        "desc": "这是保护个人隐私阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "只分享你愿意让所有人知道的基本信息",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "保护个人隐私是网络安全的基本原则。"
+          },
+          {
+            "content": "让AI科普一下网络交友的安全常识，提高自己的防范意识",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "学习安全知识有助于你做出正确的隐私保护决定。"
+          },
+          {
+            "content": "把家庭住址、学校班级等详细信息都告诉对方",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "过度分享个人信息可能带来安全风险，要保持警惕。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scene": "健康咨询",
+    "scene_desc": "学会自我观察，寻求专业健康建议",
+    "scene_icon": "🏥",
+    "steps": [
+      {
+        "step": "最近脸上长了很多青春痘，想了解可能的原因",
+        "step_type": "问题",
+        "desc": "这是最近脸上长了很多青春痘，想了解可能的原因阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "自己先回想一下作息、饮食、学习压力等可能的影响因素",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "自我观察和反思是了解身体状况的第一步。"
+          },
+          {
+            "content": "让AI介绍青少年长痘的常见原因，但不要求具体诊断",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供健康科普知识，帮助你了解常见情况。"
+          },
+          {
+            "content": "详细描述症状让AI直接诊断是什么类型的痘痘",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "AI不能替代医生进行疾病诊断，可能误导你。"
+          }
+        ]
+      },
+      {
+        "step": "想了解更多关于青少年营养不良的知识",
+        "step_type": "问题",
+        "desc": "这是想了解更多关于青少年营养不良的知识阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "去学校图书馆或网上查找权威的健康教育资料",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "权威医学资料最可靠，信息更准确全面。"
+          },
+          {
+            "content": "让AI介绍基本概念，然后自己查证相关的营养知识",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供入门介绍，但需要进一步验证学习。"
+          },
+          {
+            "content": "完全相信AI提供的健康建议，按照执行",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "健康问题需要专业医生指导，不能只听AI建议。"
+          }
+        ]
+      },
+      {
+        "step": "感冒症状持续一周了，不知道要不要去医院",
+        "step_type": "问题",
+        "desc": "这是感冒症状持续一周了，不知道要不要去医院阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "告诉家长、校医或老师身体状况，听取他们的专业建议",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "家长、校医、老师更了解你的情况，能给出专业判断。"
+          },
+          {
+            "content": "询问AI什么情况下感冒需要看医生，但最终听家长、校医建议",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "了解就医指征有帮助，但决定权在家长、校医和医生。"
+          },
+          {
+            "content": "根据AI的建议决定是否需要看医生",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "是否就医的决定不能依赖AI，需要专业医疗判断。"
+          }
+        ]
+      },
+      {
+        "step": "想要养成更好的生活习惯，预防疾病",
+        "step_type": "问题",
+        "desc": "这是想要养成更好的生活习惯，预防疾病阶段，请选择合适的做法。",
+        "options": [
+          {
+            "content": "和家长、老师、校医讨论，制定适合自己的作息和运动计划",
+            "type": "不用AI",
+            "is_correct": true,
+            "feedback": "家长、老师、校医更了解你的实际情况，能给出个性化建议。"
+          },
+          {
+            "content": "让AI介绍青少年健康生活的一般原则，自己结合实际调整，可以同时咨询家长和校医",
+            "type": "合理用AI",
+            "is_correct": true,
+            "feedback": "AI可以提供科普知识，但要根据自己情况灵活运用。"
+          },
+          {
+            "content": "完全按照AI制定的健康计划执行",
+            "type": "错误用AI",
+            "is_correct": false,
+            "feedback": "健康管理需要个性化，AI无法了解你的具体情况。"
+          }
+        ]
+      }
+    ]
+  }
+]
