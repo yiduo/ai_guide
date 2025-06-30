@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # AI使用指南项目结构与内容规则
 
